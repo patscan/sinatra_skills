@@ -1,5 +1,39 @@
 <div class="container">
   <h1>User Skills and Levels</h1>
 
+  <table border="1">
+    <tr>
+      <td>Name</td> <td>Skill</td> <td>Years</td> <td>Formal?</td>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+      <td>
+      <!--name-->
+      <%= user.name %>
+      </td>
+      <td>
+        <!--skill-->
+      <% user.proficiencies.each do |p| %>
+        <%= Skill.find(p.id).name %>
+        
+      <% end %>
+      </td>
+      <td>
+        <!--years_experience-->
+      <% user.proficiencies.each do |p| %>
+        <%= p.years_experience %>
+      <% end %>
+      </td>
+      <td>
+        <!--formal-->
+      <% user.proficiencies.each do |p| %>
+        <%= p.formal_education %>
+      <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
   <%# TODO: display the skills and proficiency levels for each user ... %>
 </div>
+
